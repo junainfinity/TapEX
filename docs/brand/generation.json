@@ -1,0 +1,28 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-09-20",
+  "userRequested": "Quantellics typographic crypto technology logo for Q-Maya, dark and light editions with a common coloured shape",
+  "initial": "Use case: logo-brand. Create one polished typographic logo for a crypto technology startup, for the top of its GitHub repository README. Exact text: \"Quantellics\" (Q-u-a-n-t-e-l-l-i-c-s), rendered perfectly once, with a capital Q and lowercase remaining letters. Custom geometric sans-serif lettering, precise spacing, architectural yet readable, subtle distinctive diagonal detail in the Q that evokes a price tick or computational signal. Typographic wordmark is the entire logo, no separate icon. Sophisticated flat vector-like design, crisp contours, clean ink-white lettering with a restrained cool mint/cyan accent integrated into the Q. Deep near-black charcoal navy solid background, horizontal composition with generous but not excessive breathing room. Wide 3:1 banner. Premium technical identity, credible financial infrastructure feel. No coins, no Bitcoin symbols, no chain-link clipart, no charts behind text, no slogans, no mockup, no 3D, no glow, no watermark, no extra text. Deliver a single final wordmark, not a contact sheet.",
+  "cleanup": "Use case: logo-brand, precise cleanup edit. The reference is the edit target. Keep the same wordmark design, spelling \"Quantellics\", wide horizontal composition, white geometric lowercase letters with initial capital Q, and mint diagonal Q stroke. Repair all the severe speckled/distressed artifacts, ragged edges, pinholes and gray outlines. The final must have perfectly clean solid letter fills and smooth vector-like antialiased contours. Give every letter clear professional kerning, especially the two l letters and i. Solid uniform opaque background #080D14; solid warm-white letters #F5F8FA, mint Q diagonal #7CEAD4. This is a clean technology wordmark, absolutely no grunge/noise/texture/glitch effect or thin outline. No new text, no separate icon, no 3D, no mockup. Single finished logo at wide 3:1 ratio.",
+  "variants": [
+    {
+      "key": "dark",
+      "prompt": "Precise logo identity edit. Use the attached clean Quantellics wordmark as the exact design. Preserve exact spelling \"Quantellics\", letter geometry, baseline, kerning and horizontal 3:1 composition. Replace only the round dot above the i with a small crisp mint SQUARE, using brand accent #47CDB3. This square and the diagonal Q stroke must be exactly the same solid #47CDB3 in both dark and light brand editions. Perfect clean solid fills and vector-like antialiasing; no distressed edges, noise, texture, glow, 3D or outline. No separate additional symbol or new text. Create the DARK edition only: opaque uniform deep navy background #080D14; all letters in off-white #F5F8FA, except the mint Q diagonal and mint square i dot. The square should be noticeable but restrained, centred over the i stem."
+    },
+    {
+      "key": "light",
+      "prompt": "Precise logo identity edit. Use the attached clean Quantellics wordmark as the exact design. Preserve exact spelling \"Quantellics\", letter geometry, baseline, kerning and horizontal 3:1 composition. Replace only the round dot above the i with a small crisp mint SQUARE, using brand accent #47CDB3. This square and the diagonal Q stroke must be exactly the same solid #47CDB3 in both dark and light brand editions. Perfect clean solid fills and vector-like antialiasing; no distressed edges, noise, texture, glow, 3D or outline. No separate additional symbol or new text. Create the LIGHT edition only: opaque uniform near-white background #F5F8FA; all letters in deep navy #080D14, except the mint Q diagonal and mint square i dot. The square should be noticeable but restrained, centred over the i stem. Maintain the exact original letter shapes and dimensions."
+    }
+  ],
+  "assets": [
+    {
+      "file": "quantellics-dark.png",
+      "sourceFile": "exec-124c26e2-8960-4c1d-a2a5-f81967432ea1.png"
+    },
+    {
+      "file": "quantellics-light.png",
+      "sourceFile": "exec-26ab7300-72a6-433b-9b2b-a5cef2af88c8.png"
+    }
+  ],
+  "review": "Final spelling Quantellics, geometric type, mint Q stroke, mint square i-dot; complementary light/dark backgrounds visually inspected."
+}

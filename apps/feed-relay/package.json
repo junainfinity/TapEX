@@ -1,0 +1,16 @@
+{
+  "name": "@maya/feed-relay",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "start:live": "FEED_SOURCE=binance node src/server.mjs",
+    "generate-data": "node scripts/generate-data.mjs",
+    "test:unit": "node --test test/server.test.mjs",
+    "dev": "node --watch src/server.mjs"
+  },
+  "engines": {
+    "node": "^24.0.0"
+  }
+}

@@ -1,0 +1,39 @@
+name: "Need it installed, customised or supported?"
+description: Ask Quantellics about installing, customising, supporting or commercially licensing TapEX.
+title: "[Enquiry] "
+labels: ["enquiry"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue is public. Don't include confidential details, keys or personal data — we'll move to email (info@quantellics.com) or a call (https://quantellics.com).
+  - type: dropdown
+    id: service
+    attributes:
+      label: What do you need?
+      multiple: true
+      options: [Install on our infrastructure, Customise / white-label, Dedicated support / SLA, Commercial licence, Not sure yet]
+    validations:
+      required: true
+  - type: input
+    id: company
+    attributes:
+      label: Company / project
+    validations:
+      required: true
+  - type: input
+    id: contact
+    attributes:
+      label: Best contact (email, Telegram or Discord)
+    validations:
+      required: true
+  - type: dropdown
+    id: timeline
+    attributes:
+      label: Timeline
+      options: [ASAP, 1–3 months, 3–6 months, Exploring]
+  - type: textarea
+    id: details
+    attributes:
+      label: What are you building?
+      description: Markets, jurisdictions, expected users — high level only.

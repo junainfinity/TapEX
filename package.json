@@ -1,0 +1,21 @@
+{
+  "name": "maya-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": { "node": "^24.0.0", "pnpm": "11.25.0" },
+  "scripts": {
+    "build": "turbo run build --cache=local:rw",
+    "typecheck": "turbo run typecheck --cache=local:rw",
+    "test:unit": "turbo run test:unit --cache=local:rw",
+    "test:e2e": "turbo run test:e2e --cache=local:rw",
+    "probe:live": "turbo run probe:live --cache=local:rw",
+    "qa:evidence": "turbo run qa:evidence --cache=local:rw",
+    "dev": "turbo run dev --cache=local:rw",
+    "check:boundaries": "node tooling/check-boundaries.mjs",
+    "test:n1": "vitest run packages/contracts/tests packages/config/tests",
+    "check": "pnpm check:boundaries && pnpm typecheck && pnpm test:unit && pnpm build"
+  },
+  "devDependencies": { "@babel/parser": "7.29.9", "turbo": "2.11.2", "typescript": "7.0.2", "vitest": "5.0.1" }
+}

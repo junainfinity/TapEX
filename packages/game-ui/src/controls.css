@@ -1,0 +1,69 @@
+/* Colour and light respond without moving chart targets or changing layout. */
+.maya :is(button, a[href], select) {
+  transition:background-color 160ms ease,color 160ms ease,border-color 160ms ease,box-shadow 180ms ease,filter 160ms ease;
+}
+.maya :is(button:not(.offer), a[href], select):focus-visible {
+  outline:2px solid #edffa8;outline-offset:3px;
+  background-color:#563049;color:#f3ffc9;
+  box-shadow:inset 0 0 0 1px #df9cc044,0 0 18px #cc6fa128;
+}
+@media (hover:hover) and (pointer:fine) {
+  .maya :is(button:not(.offer):not(:disabled), a[href], select):hover {
+    background-color:#563049;color:#f3ffc9;border-color:#c488a5;
+    box-shadow:inset 0 0 0 1px #df9cc044,0 0 18px #cc6fa128;
+  }
+  .maya .offer:not(:disabled):hover {
+    background-color:#9c51723d;color:#fff0f8;border-color:#d99aba80;
+    box-shadow:inset 0 0 20px #ca699a24,0 0 14px #cc6fa11c;
+  }
+  .maya a[href]:is(.book-button,.wallet-contact):hover {
+    background:#f4ffd0;color:#26320f;box-shadow:0 0 24px #dcff8c40,inset 0 0 0 1px #fff8;
+  }
+}
+.maya :is(button:not(:disabled), a[href]):active {
+  background-color:#6c3c58;color:#fff9dd;filter:brightness(1.12);
+  box-shadow:inset 0 2px 8px #16091450;
+}
+.maya .header-actions { display:flex;align-items:center;gap:8px; }
+.maya .wallet-button {
+  display:grid;place-items:center;flex:none;width:44px;height:44px;padding:0;
+  border:1px solid #62304a;border-radius:50%;background:#21101dcc;color:#c69ab2;
+}
+.maya .wallet-button svg { width:19px;height:19px; }
+.maya[data-profile=mobile] .header-actions { position:absolute;right:0;top:45px; }
+.maya[data-profile=mobile] .header-actions .help-button { position:static;display:block; }
+.maya[data-profile=mobile] .board-hint { padding-right:108px; }
+.maya[data-short=true] .header-actions { position:static; }
+.maya .wallet-dialog {
+  box-sizing:border-box;width:min(420px,calc(100vw - 32px));max-height:calc(100dvh - 32px);
+  margin:auto;padding:32px;border:1px solid #80566e;border-radius:24px;
+  background:radial-gradient(ellipse at top left,#51283f,#291522 80%);color:#f9e9ef;
+  box-shadow:0 28px 100px #10050bb3;overflow:auto;
+}
+.maya .wallet-dialog[open] { animation:wallet-dialog-enter 220ms cubic-bezier(.2,.7,.2,1) both; }
+.maya .wallet-dialog::backdrop { background:#140b12b8;backdrop-filter:blur(8px); }
+.maya .wallet-dialog-close {
+  position:absolute;right:12px;top:12px;width:44px;height:44px;border-radius:50%;
+  background:transparent;color:#d9abc4;font-size:25px;
+}
+.maya .wallet-dialog-icon {
+  display:grid;place-items:center;width:56px;height:56px;margin-bottom:24px;
+  border:1px solid #cf9abc55;border-radius:18px;background:#f1b8d710;color:#e9ffae;
+  box-shadow:0 0 28px #c77ca617;
+}
+.maya .wallet-dialog-icon svg { width:28px;height:28px; }
+.maya .wallet-eyebrow { margin-bottom:10px;font:600 10px/1.5 'DM Sans',sans-serif;letter-spacing:1.5px;color:#d8b58c; }
+.maya .wallet-dialog h2 { margin:0 0 14px;font-size:28px;line-height:1.15;letter-spacing:-.7px;font-weight:500;color:#ffeaf5; }
+.maya .wallet-dialog p { margin:0 0 26px;font-size:14px;line-height:1.75;color:#d7b9c9; }
+.maya .wallet-contact {
+  display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;
+  padding:12px 18px;border-radius:12px;background:#e4fda4;color:#273313;
+  text-decoration:none;font-size:14px;font-weight:600;
+}
+.maya a[href]:is(.book-button,.wallet-contact):focus-visible { background:#f4ffd0;color:#26320f; }
+@media(max-width:480px) { .maya .wallet-dialog { padding:28px 24px;border-radius:20px; } }
+@keyframes wallet-dialog-enter { from { opacity:0;transform:translateY(10px) scale(.98); } to { opacity:1;transform:none; } }
+@media(prefers-reduced-motion:reduce) {
+  .maya :is(button,a[href],select) { transition:none; }
+  .maya .wallet-dialog[open] { animation:none; }
+}

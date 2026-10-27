@@ -1,0 +1,114 @@
+# Maya-Live staging stack for Docker Desktop, kept separate from the paper demo (compose.yaml).
+# Runbook (deploy, start/stop/upgrade, data, reset, admin token): docs/maya-live/STAGING.md
+#   docker compose -f compose.live.yaml build
+#   docker compose -f compose.live.yaml up -d --wait
+# Game http://127.0.0.1:8180 · Admin console http://127.0.0.1:8190 · House server 127.0.0.1:8790 (all loopback only)
+# Defaults to Base Sepolia, which needs the contracts deployed first (contracts/deployments/84532.json).
+# Local chain instead (profile local-chain, alias anvil; anvil's state persists in the anvil-data volume):
+#   export MAYA_NETWORK=local MAYA_RPC_URL=http://anvil:8545 MAYA_PUBLIC_RPC_URL=http://127.0.0.1:8545
+#   docker compose -f compose.live.yaml --profile local-chain up -d --wait anvil
+#   docker compose -f compose.live.yaml --profile local-chain run --rm -T house-server node dist/chain/deploy-cli.js --network local --rpc-url http://anvil:8545
+#   docker compose -f compose.live.yaml --profile local-chain up -d --wait
+name: maya-live
+
+x-hardening: &hardening
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  restart: unless-stopped
+  logging:
+    driver: json-file
+    options: { max-size: 10m, max-file: "5" }
+
+services:
+  feed-relay:
+    <<: *hardening
+    build: { context: ., dockerfile: Dockerfile, target: feed-relay }
+    image: maya-live-feed-relay:local
+    init: true
+  house-server:
+    <<: *hardening
+    build: { context: ., dockerfile: docker/live/Dockerfile, target: house-server }
+    image: maya-live-house-server:local
+    depends_on:
+      feed-relay: { condition: service_healthy }
+      # Only with the local-chain profile; ignored otherwise.
+      anvil: { condition: service_healthy, required: false }
+    environment:
+      MAYA_NETWORK: ${MAYA_NETWORK:-base-sepolia}
+      MAYA_FEED: ${MAYA_FEED:-live}
+      MAYA_RELAY_URL: http://feed-relay:8787
+      # Server-side RPC (may carry an API key; never sent to browsers). Empty: https://sepolia.base.org on base-sepolia.
+      MAYA_RPC_URL: ${MAYA_RPC_URL:-}
+      # Where players load the game (SIWE domain/URI, Origin check, Secure cookie on https).
+      MAYA_PUBLIC_ORIGIN: ${MAYA_PUBLIC_ORIGIN:-http://127.0.0.1:8180}
+      # RPC the browser wallet is told to use (GET /v1/chain-config). Local chain: http://127.0.0.1:8545.
+      MAYA_PUBLIC_RPC_URL: ${MAYA_PUBLIC_RPC_URL:-}
+      # Empty: resume the run recorded in the house-data volume (active-run-<network>.json), else start a new one.
+      MAYA_RUN_ID: ${MAYA_RUN_ID:-}
+      MAYA_ALLOW_FRESH_LEDGER: ${MAYA_ALLOW_FRESH_LEDGER:-}
+      MAYA_ONCHAIN_BETS: ${MAYA_ONCHAIN_BETS:-}
+      MAYA_SIM_PLAYERS: ${MAYA_SIM_PLAYERS:-300}
+      MAYA_MARKET_DATA: /market-data
+    volumes:
+      - house-data:/data
+      # testnet-wallets.json (read) and admin-token (created on first start): repoRoot/.secrets in the container.
+      - ./.secrets:/app/.secrets
+      - ./contracts/deployments:/app/contracts/deployments
+      - ${MAYA_MARKET_DATA_HOST:-../market-data}:/market-data:ro
+    ports:
+      - "127.0.0.1:8790:8790"
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    init: true
+    # SIGTERM stops the server and flushes the journal before exit.
+    stop_grace_period: 30s
+  admin:
+    <<: *hardening
+    build: { context: ., dockerfile: docker/live/Dockerfile, target: admin }
+    image: maya-live-admin:local
+    depends_on:
+      house-server: { condition: service_healthy }
+    ports:
+      - "127.0.0.1:8190:8080"
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+  game:
+    <<: *hardening
+    build:
+      context: .
+      dockerfile: docker/live/Dockerfile
+      target: game
+      # Live build; the DEV ONLY test wallet is never bundled (the Dockerfile pins VITE_MAYA_TEST_WALLET=0 and checks).
+      args: { VITE_MAYA_MODE: live }
+    image: maya-live-game:local
+    depends_on:
+      house-server: { condition: service_healthy }
+    ports:
+      - "127.0.0.1:8180:8080"
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+  anvil:
+    <<: *hardening
+    profiles: [local-chain, anvil]
+    image: ghcr.io/foundry-rs/foundry:stable
+    # The image's entrypoint is `sh -c`; exec makes anvil PID 1 so SIGTERM reaches it and the state is dumped on stop.
+    # --state loads the chain from the anvil-data volume at start and dumps it on exit and every 5 s.
+    command: ["exec anvil --host 0.0.0.0 --chain-id 31337 --state /home/foundry/anvil-state.json --state-interval 5"]
+    volumes:
+      - anvil-data:/home/foundry
+    ports:
+      - "127.0.0.1:8545:8545"
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    healthcheck:
+      test: ["CMD", "cast", "chain-id", "--rpc-url", "http://127.0.0.1:8545"]
+      interval: 5s
+      timeout: 4s
+      retries: 12
+      start_period: 5s
+    stop_grace_period: 30s
+
+volumes:
+  house-data:
+  anvil-data:

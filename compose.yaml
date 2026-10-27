@@ -1,0 +1,51 @@
+name: maya
+services:
+  feed-relay:
+    build:
+      context: .
+      target: feed-relay
+    image: maya-feed-relay:local
+    environment:
+      FEED_SOURCE: ${FEED_SOURCE:-replay}
+    restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    init: true
+  recorder:
+    build:
+      context: .
+      target: recorder
+    image: maya-recorder:local
+    depends_on:
+      feed-relay:
+        condition: service_healthy
+    # A host path here must be writable by uid 1000; the default is a named volume.
+    volumes:
+      - ${MAYA_MARKET_LOG:-market-log}:/data
+    restart: unless-stopped
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    init: true
+    cpus: 0.5
+    mem_limit: 256m
+  web:
+    build:
+      context: .
+      target: web
+    image: maya-web:local
+    depends_on:
+      feed-relay:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${MAYA_PORT:-8080}:8080"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+
+volumes:
+  market-log:

@@ -1,0 +1,23 @@
+**/node_modules
+**/dist
+**/.turbo
+.git
+artifacts
+docs
+**/tests
+**/*.test.ts
+apps/demo/dev.html
+apps/demo/motion.html
+apps/demo/src/dev
+**/*.log
+.env*
+# Maya-Live (docker/live/Dockerfile): testnet keys and the admin token never enter a build context; Foundry
+# outputs are rebuilt inside the image (a stale or ABI-only host artifact must not be baked in); local server data
+# and deployment records are runtime state, mounted by compose.live.yaml.
+.secrets
+contracts/out
+contracts/cache
+contracts/broadcast
+contracts/deployments
+apps/house-server/data
+maya-live

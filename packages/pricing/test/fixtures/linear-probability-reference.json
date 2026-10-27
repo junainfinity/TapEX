@@ -1,0 +1,87 @@
+{
+  "at": "2026-09-20T15:27:02.923641+00:00",
+  "method": "Independent seeded Gaussian increment simulation of continuous connected sample paths. Developer probability check only; never used for game outcomes.",
+  "seed": 92835,
+  "cases": [
+    {
+      "zLower": -0.1,
+      "zUpper": 0.1,
+      "timeToStartS": 3,
+      "windowS": 5,
+      "observationIntervalS": 1,
+      "referenceProbability": 0.485691,
+      "standardError": 0.0004997952105802936,
+      "paths": 1000000
+    },
+    {
+      "zLower": -0.5,
+      "zUpper": 0.5,
+      "timeToStartS": 10,
+      "windowS": 5,
+      "observationIntervalS": 1,
+      "referenceProbability": 0.596335,
+      "standardError": 0.0004906318046916649,
+      "paths": 1000000
+    },
+    {
+      "zLower": 1,
+      "zUpper": 1.25,
+      "timeToStartS": 5,
+      "windowS": 5,
+      "observationIntervalS": 1,
+      "referenceProbability": 0.295674,
+      "standardError": 0.00045634513881929323,
+      "paths": 1000000
+    },
+    {
+      "zLower": -2,
+      "zUpper": -1.5,
+      "timeToStartS": 20,
+      "windowS": 5,
+      "observationIntervalS": 1,
+      "referenceProbability": 0.109718,
+      "standardError": 0.0003125379344591629,
+      "paths": 1000000
+    },
+    {
+      "zLower": -0.03,
+      "zUpper": 0.03,
+      "timeToStartS": 60,
+      "windowS": 5,
+      "observationIntervalS": 1,
+      "referenceProbability": 0.153067,
+      "standardError": 0.00036005207055507955,
+      "paths": 1000000
+    },
+    {
+      "zLower": 3,
+      "zUpper": 3.2,
+      "timeToStartS": 90,
+      "windowS": 5,
+      "observationIntervalS": 1,
+      "referenceProbability": 0.001853,
+      "standardError": 4.300658543758153e-05,
+      "paths": 1000000
+    },
+    {
+      "zLower": -0.1,
+      "zUpper": 0.8,
+      "timeToStartS": 120,
+      "windowS": 5,
+      "observationIntervalS": 1,
+      "referenceProbability": 0.405218,
+      "standardError": 0.000490934183446213,
+      "paths": 1000000
+    },
+    {
+      "zLower": -3,
+      "zUpper": 3,
+      "timeToStartS": 4,
+      "windowS": 5,
+      "observationIntervalS": 1,
+      "referenceProbability": 0.998928,
+      "standardError": 3.272385698538548e-05,
+      "paths": 1000000
+    }
+  ]
+}

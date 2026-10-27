@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.turbo/
+coverage/
+test-results/
+playwright-report/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+!.env.sample
+artifacts/verification/n1/clean-workspace/
+
+# Maya-Live: local testnet keys and Foundry outputs
+.secrets/
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+apps/house-server/data/
+
+# Obsidian per-machine UI state for the maya-live vault
+maya-live/.obsidian/workspace*.json
+maya-live/.obsidian/cache

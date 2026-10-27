@@ -1,0 +1,28 @@
+{
+  "name": "@maya/demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "preview": "vite preview --host 127.0.0.1",
+    "test:unit": "vitest run"
+  },
+  "dependencies": {
+    "@maya/contracts": "workspace:*",
+    "@maya/config": "workspace:*",
+    "@maya/market-data": "workspace:*",
+    "@maya/pricing": "workspace:*",
+    "@maya/engine": "workspace:*",
+    "@maya/game-ui": "workspace:*",
+    "viem": "2.56.9"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "vite": "8.3.0",
+    "vitest": "5.0.1",
+    "@types/node": "24.13.6"
+  }
+}

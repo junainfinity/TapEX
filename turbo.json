@@ -1,0 +1,13 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "globalDependencies": ["tooling/**"],
+  "tasks": {
+    "build": { "dependsOn": ["^build"], "outputs": ["dist/**"], "env": ["VITE_*", "MAYA_*_URL"] },
+    "typecheck": { "dependsOn": ["^build"], "outputs": [] },
+    "test:unit": { "dependsOn": ["build"], "outputs": [] },
+    "dev": { "dependsOn": ["^build"], "cache": false, "persistent": true },
+    "probe:live": { "dependsOn": ["build"], "cache": false },
+    "test:e2e": { "dependsOn": ["build"], "cache": false },
+    "qa:evidence": { "dependsOn": ["build"], "cache": false }
+  }
+}

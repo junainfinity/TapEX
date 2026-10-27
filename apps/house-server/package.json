@@ -1,0 +1,20 @@
+{
+  "name": "@maya/house-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test:unit": "vitest run",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "@maya/contracts": "workspace:*",
+    "@maya/config": "workspace:*",
+    "@maya/house": "workspace:*",
+    "viem": "2.56.9"
+  },
+  "devDependencies": { "typescript": "7.0.2", "vitest": "5.0.1", "@types/node": "24.13.6" },
+  "engines": { "node": "^24.0.0" }
+}

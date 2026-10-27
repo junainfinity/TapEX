@@ -1,0 +1,102 @@
+/* Live ($OPEN testnet) chrome. Only loaded by the live build (@maya/game-ui/live); the paper demo never imports it. */
+.maya[data-live=true] .wordmark span { color:#ffd9a0;border-color:#b98a4c;background:#3a2412; }
+.maya .live-account-chip {
+  flex:none;min-height:44px;max-width:180px;padding:0 14px;border:1px solid #9a6a3f;border-radius:22px;
+  background:#2f1a14e6;color:#ffe2b8;font:600 12px/1 'DM Sans',sans-serif;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.maya .live-account-chip[data-state=signed-in] { border-color:#6f8f3a;background:#1d2410e6;color:#e6ffb0;font-variant-numeric:tabular-nums; }
+.maya .live-phone-connect { display:none; }
+.maya[data-phone=true] .live-phone-connect:not([hidden]) {
+  display:flex;align-items:center;justify-content:center;min-width:64px;min-height:44px;padding:0 12px;border:1px solid #9a6a3f;border-radius:14px;
+  background:#2f1a14;color:#ffe2b8;font:600 12px/1 'DM Sans',sans-serif;
+}
+.maya .live-flag { display:none; }
+.maya[data-phone=true] .live-flag {
+  display:block;position:absolute;right:calc(var(--safe-right) + 12px);top:calc(var(--header-bottom) + 4px);z-index:5;
+  padding:3px 8px;border:1px solid #b98a4c;border-radius:8px;background:#2a180fe6;color:#ffd9a0;font:600 9px/1.4 'DM Sans',sans-serif;letter-spacing:.8px;
+}
+.maya[data-phone=true] .status-line { max-width:calc(100% - var(--safe-left) - var(--safe-right) - 150px); }
+.maya[data-live=true] .phone-allowance { display:none !important; }
+
+/* Promo banner: centred in the desktop header, never over the squares. */
+.maya .live-promo {
+  pointer-events:auto;display:flex;align-items:center;gap:10px;min-width:0;flex:0 1 auto;max-width:min(640px,calc(100vw - 740px));height:40px;padding:0 14px 0 6px;
+  border:1px solid #5d4a2a;border-radius:22px;background:#1b1109e8;color:#f3dcc0;font-size:11px;white-space:nowrap;overflow:hidden;
+}
+.maya .live-promo > span { min-width:0;overflow:hidden;text-overflow:ellipsis; }
+.maya .live-promo-tier { flex:none;padding:5px 9px;border-radius:14px;background:#ffd98f;color:#2d1c05;font-weight:700;font-size:10px;letter-spacing:.6px;text-transform:uppercase; }
+.maya .live-promo-win { flex:0 1 auto;font-weight:600;color:#fff0d6; }
+.maya .live-promo-progress { flex:none;display:flex;align-items:center;gap:6px;color:#d7b894;font-variant-numeric:tabular-nums; }
+.maya .live-promo-progress i { flex:none;width:46px;height:5px;border-radius:3px;background:linear-gradient(90deg,#ffd98f var(--p),#4d3a22 var(--p)); }
+.maya .live-promo-boost { flex:none;color:#e6ffb0;font-weight:600;font-variant-numeric:tabular-nums; }
+.maya[data-profile=tablet] .live-promo-progress,.maya[data-profile=mobile] .live-promo-progress { display:none; }
+.maya[data-phone=true] .live-promo { display:none; }
+@media (max-width:1560px) { .maya .live-promo-progress { display:none; } }
+@media (max-width:1100px) { .maya .live-promo-win { display:none; } }
+/* OPEN amounts are longer than paper dollars: keep card labels on one line (the board scales them to fit). */
+.maya[data-live=true] .position-card b,.maya[data-live=true] .position-card span { white-space:nowrap; }
+
+/* Confirming cards: the stake is reserved, the bet is not placed yet. */
+.maya .position-card.pending-play {
+  background:repeating-linear-gradient(135deg,#3b2a14 0 8px,#33230f 8px 16px);border:2px dashed #ffd98f;color:#ffe7bd;box-shadow:0 0 18px #ffd98f33;
+}
+.maya .position-card.pending-play[data-phase=checking] { border-color:#c9a9e8;color:#eadcf8;background:#2c2140; }
+@media (prefers-reduced-motion:no-preference) {
+  .maya .position-card.pending-play { animation:live-confirming 1.1s ease-in-out infinite; }
+}
+@keyframes live-confirming { 0%,100% { opacity:1; } 50% { opacity:.62; } }
+
+/* Phone balance panel actions. */
+.maya .phone-live-funds { display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px; }
+
+/* Dialogs share the wallet dialog's look. */
+.maya .live-dialog {
+  box-sizing:border-box;width:min(460px,calc(100vw - 24px));max-height:calc(100dvh - 24px);margin:auto;padding:28px 26px 24px;
+  border:1px solid #80566e;border-radius:22px;background:radial-gradient(ellipse at top left,#4a2539,#261320 80%);color:#f9e9ef;
+  box-shadow:0 28px 100px #10050bb3;overflow:auto;overscroll-behavior:contain;
+}
+.maya .live-dialog::backdrop { background:#140b12c4;backdrop-filter:blur(6px); }
+.maya .live-dialog h2 { margin:0 44px 12px 0;font-size:24px;line-height:1.2;font-weight:500;color:#ffeaf5; }
+.maya .live-dialog h3 { margin:0 0 8px;font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:#d8b58c;font-weight:600; }
+.maya .live-dialog-close { position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:50%;background:transparent;color:#d9abc4;font-size:25px; }
+.maya .live-note { margin:0 0 14px;padding:8px 10px;border:1px solid #b98a4c;border-radius:10px;background:#2a180f;color:#ffd9a0;font-size:12px;line-height:1.5; }
+.maya .live-help { margin:0 0 12px;font-size:13px;line-height:1.6;color:#d7b9c9; }
+.maya .live-warn { margin:0 0 10px;font-size:13px;color:#ffcf8a; }
+.maya .live-error { margin:8px 0;font-size:13px;line-height:1.5;color:#ffb3a8; }
+.maya .live-section { padding:14px 0;border-top:1px solid #5e3a4e; }
+.maya .live-section:first-child { border-top:0;padding-top:0; }
+.maya .live-address { margin:0 0 10px;font-size:14px; }
+.maya .live-address a,.maya .live-txs a,.maya .live-vouchers a { color:#e9ffae; }
+.maya .live-balances { display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 10px; }
+.maya .live-balances div { padding:10px;border:1px solid #5e3a4e;border-radius:12px;background:#1d0c17; }
+.maya .live-balances dt { font-size:11px;color:#c79fb5;margin-bottom:4px; }
+.maya .live-balances dd { margin:0;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere; }
+.maya .live-providers { display:grid;gap:8px; }
+.maya .live-provider { display:flex;align-items:center;gap:10px;min-height:48px;padding:10px 14px;border:1px solid #80566e;border-radius:12px;background:#33182a;color:#ffeaf5;font-size:14px;text-align:left; }
+.maya .live-provider img { border-radius:6px; }
+.maya .live-primary { display:block;width:100%;min-height:48px;margin-top:8px;border-radius:12px;background:#e4fda4;color:#273313;font-size:14px;font-weight:600; }
+.maya .live-secondary { min-height:44px;padding:0 16px;border:1px solid #80566e;border-radius:12px;background:#33182a;color:#ffeaf5;font-size:13px; }
+.maya .live-link { min-height:44px;padding:0;background:transparent;color:#c79fb5;font-size:12px;text-decoration:underline; }
+.maya .live-actions { display:grid;grid-template-columns:1fr 1fr;gap:8px; }
+.maya .live-form label { display:block;margin:0 0 6px;font-size:12px;color:#d8b58c; }
+.maya .live-input-row { display:flex;gap:8px; }
+.maya .live-input-row input {
+  flex:1;min-width:0;min-height:48px;padding:0 14px;border:1px solid #80566e;border-radius:12px;background:#1d0c17;color:#fff4fa;
+  font:600 18px/1 'DM Sans',sans-serif;font-variant-numeric:tabular-nums;
+}
+.maya .live-input-row input:focus-visible { outline:2px solid #edffa8;outline-offset:2px; }
+.maya .live-max { min-width:64px;min-height:48px;border:1px solid #80566e;border-radius:12px;background:#33182a;color:#ffeaf5;font-size:12px; }
+.maya .live-hint { margin:6px 0 4px;font-size:12px;color:#c79fb5;font-variant-numeric:tabular-nums; }
+.maya .live-flow { margin-top:12px; }
+.maya .live-step { margin:0 0 6px;font-size:14px;font-weight:600; }
+.maya .live-step[data-status=working]::before { content:'';display:inline-block;width:9px;height:9px;margin-right:8px;border-radius:50%;background:#ffd98f;vertical-align:1px; }
+.maya .live-step[data-status=done] { color:#e6ffb0; }
+.maya .live-step[data-status=failed] { color:#ffb3a8; }
+.maya .live-txs,.maya .live-vouchers { margin:0;padding:0;list-style:none;font-size:13px; }
+.maya .live-txs li { margin:4px 0; }
+.maya .live-subtitle { margin-top:18px !important; }
+.maya .live-vouchers li { display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 0;border-top:1px solid #5e3a4e; }
+.maya .live-voucher-amount { font-weight:600;font-variant-numeric:tabular-nums; }
+.maya .live-voucher-status { flex:1;min-width:120px;color:#d7b9c9; }
+@media (prefers-reduced-motion:no-preference) { .maya .live-dialog[open] { animation:wallet-dialog-enter 200ms cubic-bezier(.2,.7,.2,1) both; } }
+@media (max-width:480px) { .maya .live-dialog { padding:24px 18px 18px;border-radius:18px;margin:auto auto 8px; } .maya .live-dialog h2 { font-size:21px; } }

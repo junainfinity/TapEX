@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Book a call with Quantellics
+    url: "https://quantellics.com"
+    about: "Install, customise, support or commercial licence."
+  - name: Security report (private)
+    url: "https://quantellics.com"
+    about: "Do not file security issues publicly. Email info@quantellics.com."

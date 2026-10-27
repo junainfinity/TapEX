@@ -1,0 +1,254 @@
+{
+  "nodes": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 0,
+      "y": -310,
+      "width": 2250,
+      "height": 205,
+      "text": "# Maya · Adaptive monorepo development graph\n\nDesktop · Tablet · Mobile | BTC/USD + ETH/USD · Lynx public prices + local paper odds · Three.js · 10 bets → consultation → refresh for 10 more\n\nSix node plans × three planning QA passes, with scope-amendment rechecks; three sequential graph QA passes. Runtime QA is planned, not executed. [[Maya - Monorepo and Adaptive Layouts]]",
+      "color": "6"
+    },
+    {
+      "id": "node-loop",
+      "type": "text",
+      "x": 0,
+      "y": 1080,
+      "width": 2250,
+      "height": 205,
+      "text": "## Every node: review → correct → recheck, three times\n\n1. Requirements and source evidence\n2. Boundaries, failures and interfaces\n3. Verify corrections and handoff\n\nDuring implementation, repeat three meaningful runtime QA rounds with captured evidence. Never convert a planning PASS into a runtime PASS.",
+      "color": "3"
+    },
+    {
+      "id": "N1",
+      "type": "file",
+      "file": "Maya Development - N1 Foundation.md",
+      "x": 0,
+      "y": 300,
+      "width": 385,
+      "height": 435,
+      "color": "4"
+    },
+    {
+      "id": "N2",
+      "type": "file",
+      "file": "Maya Development - N2 Prices and Odds.md",
+      "x": 460,
+      "y": 0,
+      "width": 385,
+      "height": 435,
+      "color": "2"
+    },
+    {
+      "id": "N3",
+      "type": "file",
+      "file": "Maya Development - N3 Paper Engine.md",
+      "x": 920,
+      "y": 300,
+      "width": 385,
+      "height": 435,
+      "color": "4"
+    },
+    {
+      "id": "N4",
+      "type": "file",
+      "file": "Maya Development - N4 Playable Experience.md",
+      "x": 1380,
+      "y": 0,
+      "width": 385,
+      "height": 435,
+      "color": "4"
+    },
+    {
+      "id": "N5",
+      "type": "file",
+      "file": "Maya Development - N5 Consultation Flow.md",
+      "x": 1380,
+      "y": 640,
+      "width": 385,
+      "height": 435,
+      "color": "4"
+    },
+    {
+      "id": "N6",
+      "type": "file",
+      "file": "Maya Development - N6 Integration and Delivery.md",
+      "x": 1840,
+      "y": 300,
+      "width": 385,
+      "height": 435,
+      "color": "4"
+    },
+    {
+      "id": "G1",
+      "type": "text",
+      "x": 2330,
+      "y": 0,
+      "width": 420,
+      "height": 260,
+      "text": "## Graph QA 1\n\nCoverage and interfaces\n\nIndependent cross-node review, coordinator corrections, then next review of the updated graph.\n\nMaya - Graph QA Log",
+      "color": "5"
+    },
+    {
+      "id": "G2",
+      "type": "text",
+      "x": 2330,
+      "y": 370,
+      "width": 420,
+      "height": 260,
+      "text": "## Graph QA 2\n\nFailures and lifecycle\n\nIndependent cross-node review, coordinator corrections, then next review of the updated graph.\n\nMaya - Graph QA Log",
+      "color": "5"
+    },
+    {
+      "id": "G3",
+      "type": "text",
+      "x": 2330,
+      "y": 740,
+      "width": 420,
+      "height": 260,
+      "text": "## Graph QA 3\n\nCorrected full journey\n\nIndependent cross-node review, coordinator corrections, then next review of the updated graph.\n\nMaya - Graph QA Log",
+      "color": "5"
+    },
+    {
+      "id": "plan",
+      "type": "file",
+      "file": "Maya - Development Graph.md",
+      "x": 2860,
+      "y": 300,
+      "width": 470,
+      "height": 580,
+      "color": "6"
+    }
+  ],
+  "edges": [
+    {
+      "id": "N1-N2",
+      "fromNode": "N1",
+      "fromSide": "right",
+      "toNode": "N2",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N1-N3",
+      "fromNode": "N1",
+      "fromSide": "right",
+      "toNode": "N3",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N2-N3",
+      "fromNode": "N2",
+      "fromSide": "right",
+      "toNode": "N3",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N1-N4",
+      "fromNode": "N1",
+      "fromSide": "right",
+      "toNode": "N4",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N2-N4",
+      "fromNode": "N2",
+      "fromSide": "right",
+      "toNode": "N4",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N3-N4",
+      "fromNode": "N3",
+      "fromSide": "right",
+      "toNode": "N4",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N1-N5",
+      "fromNode": "N1",
+      "fromSide": "right",
+      "toNode": "N5",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N3-N5",
+      "fromNode": "N3",
+      "fromSide": "right",
+      "toNode": "N5",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N2-N6",
+      "fromNode": "N2",
+      "fromSide": "right",
+      "toNode": "N6",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N3-N6",
+      "fromNode": "N3",
+      "fromSide": "right",
+      "toNode": "N6",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N4-N6",
+      "fromNode": "N4",
+      "fromSide": "right",
+      "toNode": "N6",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N5-N6",
+      "fromNode": "N5",
+      "fromSide": "right",
+      "toNode": "N6",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "N6-G1",
+      "fromNode": "N6",
+      "fromSide": "right",
+      "toNode": "G1",
+      "toSide": "left",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "G1-G2",
+      "fromNode": "G1",
+      "fromSide": "bottom",
+      "toNode": "G2",
+      "toSide": "top",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "G2-G3",
+      "fromNode": "G2",
+      "fromSide": "bottom",
+      "toNode": "G3",
+      "toSide": "top",
+      "toEnd": "arrow"
+    },
+    {
+      "id": "G3-plan",
+      "fromNode": "G3",
+      "fromSide": "right",
+      "toNode": "plan",
+      "toSide": "left",
+      "toEnd": "arrow"
+    }
+  ]
+}
